@@ -1,14 +1,43 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Counter from './Components/Counter'
+import AddCounterForm from './Components/AddCounterForm'
 
-function App() {
+const App = () => {
+
+  const counters = [
+    {number: 1, name: "Halo Reqs", amount: 152},
+    {number: 2, name: "WoW Mounts", amount: 280},
+    {number: 3, name: "Dark Souls Achievements", amount: 44}
+  ]
+
+  const [addingCounter, setAddingCounter] = useState(false)
+
+  const handleFormRender = () => {
+    setAddingCounter(!addingCounter)
+  }
+
+  const handleSubmit = () => {
+    setAddingCounter(!addingCounter)
+  }
+
+  useEffect(() => {
+
+  })
+
   return (
     <div>
       <h1>Welcome to MultiCounter!</h1>
       <h3>By Shujaat Azim</h3>
+
       <div>
-        <Counter />
+        {counters.map(counter => (
+          <Counter key={counter.number} counterObj={counter} handleSubmit={handleSubmit}/>
+        ))}
       </div>
+      <div>
+        <button onClick={handleFormRender}>Add a Counter</button>
+      </div>
+      {addingCounter ? <AddCounterForm /> : null}
     </div>
   )
 }
