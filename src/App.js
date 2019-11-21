@@ -4,40 +4,41 @@ import AddCounterForm from './Components/AddCounterForm'
 
 const App = () => {
 
-  const [counters, setCounter] = useState([])
+  const [allCounters, setAllCounters] = useState([])
   const [addingCounter, setAddingCounter] = useState(false)
 
   const handleFormRender = () => {
     setAddingCounter(!addingCounter)
   }
 
-  const handleSubmit = () => {
-    setAddingCounter(!addingCounter)
-  }
-
   useEffect(() => {
     const counterz = [
-      {number: 1, name: "Halo Reqs", amount: 152},
-      {number: 2, name: "WoW Mounts", amount: 280},
-      {number: 3, name: "Dark Souls Achievements", amount: 44}
-    ]
-    setCounter(counterz)
+      {name: "Halo Reqs", amount: 152},
+      {name: "WoW Mounts", amount: 280},
+      {name: "Dark Souls Achievements", amount: 44}
+    ]  
+    setAllCounters(counterz)
   }, [])
+
+  const finalizeCounters = (newCounters) => {
+    setAllCounters(newCounters)
+    handleFormRender()
+  }
 
   return (
     <div>
       <h1>Welcome to MultiCounter!</h1>
       <h3>By Shujaat Azim</h3>
-
+      <hr />
       <div>
-        {counters.map(counter => (
-          <Counter key={counter.number} counterObj={counter} handleSubmit={handleSubmit}/>
-        ))}
+        {allCounters.map((counter, i) => {
+          return <Counter key={i} counterNumber={i + 1} counterObj={counter} />
+        })}
       </div>
       <div>
-        <button onClick={handleFormRender}>Add a Counter</button>
+        <button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button>
       </div>
-      {addingCounter ? <AddCounterForm /> : null}
+      {addingCounter ? <AddCounterForm allCounters={allCounters} finalizeCounters={finalizeCounters}/> : null}
     </div>
   )
 }
