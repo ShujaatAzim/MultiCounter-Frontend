@@ -4,12 +4,7 @@ import AddCounterForm from './Components/AddCounterForm'
 
 const App = () => {
 
-  const counters = [
-    {number: 1, name: "Halo Reqs", amount: 152},
-    {number: 2, name: "WoW Mounts", amount: 280},
-    {number: 3, name: "Dark Souls Achievements", amount: 44}
-  ]
-
+  const [counters, setCounter] = useState([])
   const [addingCounter, setAddingCounter] = useState(false)
 
   const handleFormRender = () => {
@@ -21,8 +16,13 @@ const App = () => {
   }
 
   useEffect(() => {
-
-  })
+    const counterz = [
+      {number: 1, name: "Halo Reqs", amount: 152},
+      {number: 2, name: "WoW Mounts", amount: 280},
+      {number: 3, name: "Dark Souls Achievements", amount: 44}
+    ]
+    setCounter(counterz)
+  }, [])
 
   return (
     <div>
