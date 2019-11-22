@@ -10,7 +10,7 @@ const App = () => {
   const handleFormRender = () => {
     setAddingCounter(!addingCounter)
   }
-
+  
   useEffect(() => {
     const counterz = [
       {name: "Halo Reqs", amount: 152},
@@ -25,14 +25,20 @@ const App = () => {
     handleFormRender()
   }
 
+  const finalizeDelete = targetCounter => {
+    let newArr = [...allCounters]
+    newArr.splice(newArr.indexOf(newArr.find(counter => counter.name === targetCounter)), 1)
+    setAllCounters(newArr)
+  }
+
   return (
     <div>
       <h1>Welcome to MultiCounter!</h1>
       <h3>By Shujaat Azim</h3>
       <hr />
       <div>
-        {allCounters.map((counter, i) => {
-          return <Counter key={i} counterNumber={i + 1} counterObj={counter} />
+        {allCounters.map(counter => {
+          return <Counter key={counter.name} counterObj={counter} finalizeDelete={finalizeDelete}/>
         })}
       </div>
       <div>
