@@ -29,33 +29,34 @@ const Counter = props => {
   }
 
   return (
-    <div>
+    <div style={{ backgroundColor: "whitesmoke"}}>
       {editing ?
         <div>
+          <hr />
           <h4>{name}: {amount} <button disabled>+</button><button disabled>-</button>
           <button onClick={cancelChange}>Cancel</button></h4>
             <form onSubmit={cancelChange}>
-              <label>Edit Counter Name: </label>
+              <label><i>Edit Counter Name: </i></label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-              <label>Edit Amount: </label>
+              <label><i>Edit Amount: </i></label>
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
               <input type="submit" value="Done" />
             </form>
-          <hr />
         </div>
       : deleting ? 
         <div>
+          <hr />
           <h4>{name}: {amount} <button disabled>+</button><button disabled>-</button>
           <button disabled>Edit</button><button disabled>Delete</button></h4>
             <h4>Are you sure you want to delete?<button onClick={() => props.finalizeDelete(name)}>Yes</button>
               <button onClick={cancelChange}>Cancel</button></h4>
-          <hr />
         </div>
       : 
         <div>
+          <hr />
           <h4>{name}: {amount} <button onClick={increase}>+</button><button onClick={decrease}>-</button>
           <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button></h4>
-          <hr />
+          <br />
         </div>
         }
     </div>

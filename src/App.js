@@ -32,19 +32,19 @@ const App = () => {
   }
 
   return (
-    <div>
-      <h1>Welcome to MultiCounter!</h1>
-      <h3>By Shujaat Azim</h3>
-      <hr />
+    <div style={{ backgroundColor: "whitesmoke", textAlign: "center" }}>
+      <h1>MultiCounter</h1>By Shujaat Azim
+      <br /><br /><br />
       <div>
         {allCounters.map(counter => {
           return <Counter key={counter.name} counterObj={counter} finalizeDelete={finalizeDelete}/>
         })}
       </div>
+      {addingCounter ? <AddCounterForm allCounters={allCounters} finalizeCounters={finalizeCounters}/> : null}
+      <br />
       <div>
         <button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button>
       </div>
-      {addingCounter ? <AddCounterForm allCounters={allCounters} finalizeCounters={finalizeCounters}/> : null}
     </div>
   )
 }

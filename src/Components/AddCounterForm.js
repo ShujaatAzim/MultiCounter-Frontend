@@ -15,6 +15,7 @@ const AddCounterForm = props => {
 
   return (
     <div>
+      <h3>Add a new counter!</h3>
       <form onSubmit={addNewCounter}>
         <label>Name of Counter</label>
           <input type="text" value={newCounterName} onChange={(e) => setNewCounterName(e.target.value)} />
