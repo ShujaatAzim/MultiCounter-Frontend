@@ -13,9 +13,13 @@ const App = () => {
   
   useEffect(() => {
     const counterz = [
-      {name: "Halo Reqs", amount: 152},
-      {name: "WoW Mounts", amount: 280},
-      {name: "Dark Souls Achievements", amount: 44}
+      {name: "Halo Reqs, Helms left", amount: 30},
+      {name: "Halo Reqs, Armors left", amount: 24},
+      {name: "Halo Reqs, Visors left", amount: 15},
+      {name: "Halo Reqs, Stances left", amount: 5},
+      {name: "Halo Reqs, Assassinations left", amount: 2},
+      {name: "Halo Reqs, Weapon Skins left", amount: 19},
+      {name: "Halo Reqs, Emblems left", amount: 53}
     ]  
     setAllCounters(counterz)
   }, [])
@@ -32,7 +36,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke", textAlign: "center" }}>
+    <div style={{ backgroundColor: "whitesmoke" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
       <div>
