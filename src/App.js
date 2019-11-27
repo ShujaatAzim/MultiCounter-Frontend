@@ -13,13 +13,14 @@ const App = () => {
   
   useEffect(() => {
     const counterz = [
-      {name: "Halo Reqs, Helms left", amount: 30},
-      {name: "Halo Reqs, Armors left", amount: 24},
-      {name: "Halo Reqs, Visors left", amount: 15},
-      {name: "Halo Reqs, Stances left", amount: 5},
-      {name: "Halo Reqs, Assassinations left", amount: 2},
-      {name: "Halo Reqs, Weapon Skins left", amount: 19},
-      {name: "Halo Reqs, Emblems left", amount: 53}
+      {name: "Halo Reqs, Helms left", amount: 30, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Armors left", amount: 24, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Visors left", amount: 15, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Stances left", amount: 5, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Assassinations left", amount: 2, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Weapon Skins left", amount: 19, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Loadout Weapons left", amount: 22, description: "Halo unlocks, common to rare only"},
+      {name: "Halo Reqs, Emblems left", amount: 53, description: "Halo unlocks, common to rare only, but might not all be unlocked from boxes"}
     ]  
     setAllCounters(counterz)
   }, [])
@@ -36,18 +37,16 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke" }}>
+    <div style={{ backgroundColor: "whitesmoke", textAlign: "center", margin: "0% 10% 0% 10%" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
+        <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
+        <div><button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button></div>
+        <div>{addingCounter ? <AddCounterForm allCounters={allCounters} finalizeCounters={finalizeCounters}/> : null}</div>
       <div>
         {allCounters.map(counter => {
           return <Counter key={counter.name} counterObj={counter} finalizeDelete={finalizeDelete}/>
         })}
-      </div>
-      {addingCounter ? <AddCounterForm allCounters={allCounters} finalizeCounters={finalizeCounters}/> : null}
-      <br />
-      <div>
-        <button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button>
       </div>
     </div>
   )

@@ -4,6 +4,7 @@ const Counter = props => {
 
   const [name, setName] = useState(props.counterObj.name)
   const [amount, setAmount] = useState(props.counterObj.amount)
+  const [description, setDescription] = useState(props.counterObj.description)
   const [editing, setEditing] = useState(false)
   const [deleting, setDeleting] = useState(false)
 
@@ -40,6 +41,8 @@ const Counter = props => {
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
               <label><i>Edit Amount: </i></label>
                 <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
+              <label><i>Edit Description: </i></label>
+                <textarea type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
               <input type="submit" value="Done" />
             </form>
         </div>
@@ -55,6 +58,7 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
+          <h5>{description}</h5>
           <button onClick={increase}>+</button><button onClick={decrease}>-</button>
             <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button>
           <br />
