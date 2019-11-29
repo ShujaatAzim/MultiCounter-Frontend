@@ -12,17 +12,17 @@ const App = () => {
   }
   
   useEffect(() => {
-    const counterz = [
-      {name: "Halo Reqs, Helms left", amount: 30, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Armors left", amount: 24, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Visors left", amount: 15, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Stances left", amount: 5, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Assassinations left", amount: 2, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Weapon Skins left", amount: 19, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Loadout Weapons left", amount: 22, description: "Halo unlocks, common to rare only"},
-      {name: "Halo Reqs, Emblems left", amount: 53, description: "Halo unlocks, common to rare only, but might not all be unlocked from boxes"}
+    const counters = [
+      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only"},
+      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only"},
+      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only"},
+      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only"},
+      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only"},
+      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only"},
+      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only"},
+      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only"}
     ]  
-    setAllCounters(counterz)
+    setAllCounters(counters)
   }, [])
 
   const finalizeCounters = (newCounters) => {
