@@ -13,14 +13,14 @@ const App = () => {
   
   useEffect(() => {
     const counters = [
-      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only"},
-      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only"},
-      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only"},
-      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only"},
-      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only"},
-      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only"},
-      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only"},
-      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only"}
+      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games"]},
+      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games"]}
     ]  
     setAllCounters(counters)
   }, [])
@@ -37,7 +37,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke", textAlign: "center", margin: "0% 10% 0% 10%" }}>
+    <div style={{ backgroundColor: "whitesmoke" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
