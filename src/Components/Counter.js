@@ -36,9 +36,9 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
-          <ol>
-          {tags.map(tag => <li>Tags: {tag}</li>)}
-          </ol>
+          <div>
+            <b>Tags:</b> {tags.map(tag => <span><i>{tag}</i> </span>)}
+          </div>
           <button disabled>+</button><button disabled>-</button><button onClick={cancelChange}>Cancel</button><button disabled>Delete</button>
             <form onSubmit={cancelChange}>
               <label><i>Edit Counter Name: </i></label>
@@ -54,9 +54,9 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
-          <ol>
-          {tags.map(tag => <li>Tags: {tag}</li>)}
-          </ol>
+          <div>
+            <b>Tags:</b> {tags.map(tag => <span><i>{tag}</i> </span>)}
+          </div>
           <button disabled>+</button><button disabled>-</button><button disabled>Edit</button><button disabled>Delete</button>
             <h4>Are you sure you want to delete?<button onClick={() => props.finalizeDelete(name)}>Yes</button>
               <button onClick={cancelChange}>Cancel</button></h4>

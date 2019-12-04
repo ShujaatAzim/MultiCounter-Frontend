@@ -13,14 +13,14 @@ const App = () => {
   
   useEffect(() => {
     const counters = [
-      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games"]},
-      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games"]}
+      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
     ]  
     setAllCounters(counters)
   }, [])
@@ -37,7 +37,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke" }}>
+    <div style={{ backgroundColor: "whitesmoke", maxWidth: "20%" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
