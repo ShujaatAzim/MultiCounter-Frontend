@@ -12,17 +12,21 @@ const App = () => {
   }
   
   useEffect(() => {
-    const counters = [
-      {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
-      {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
-    ]  
-    setAllCounters(counters)
+    // const counters = [
+    //   {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+    //   {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
+    // ]  
+    // setAllCounters(counters)
+  
+    fetch('http://localhost:3000/counters')
+    .then(resp => resp.json())
+    .then(data => console.log(data))
   }, [])
 
   const finalizeCounters = (newCounters) => {
