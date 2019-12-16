@@ -26,7 +26,7 @@ const App = () => {
   
     fetch('http://localhost:3000/counters')
     .then(resp => resp.json())
-    .then(data => console.log(data))
+    .then(data => setAllCounters(data))
   }, [])
 
   const finalizeCounters = (newCounters) => {
