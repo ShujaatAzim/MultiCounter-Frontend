@@ -11,7 +11,7 @@ const App = () => {
     setAddingCounter(!addingCounter)
   }
   
-  useEffect(() => {
+  useEffect( () => {
     // const counters = [
     //   {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
     //   {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
@@ -23,10 +23,9 @@ const App = () => {
     //   {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
     // ]  
     // setAllCounters(counters)
-  
     fetch('http://localhost:3000/counters')
     .then(resp => resp.json())
-    .then(data => setAllCounters(data))
+    .then(data => console.log(data))
   }, [])
 
   const finalizeCounters = (newCounters) => {
@@ -41,7 +40,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke", maxWidth: "20%" }}>
+    <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
