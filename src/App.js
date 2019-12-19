@@ -10,19 +10,21 @@ const App = () => {
   const handleFormRender = () => {
     setAddingCounter(!addingCounter)
   }
+
   
   useEffect( () => {
-    // const counters = [
-    //   {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
-    //   {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
-    // ]  
-    // setAllCounters(counters)
+    const counters = [
+        {name: "Halo Reqs, Helms", amount: 11, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Armors", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Visors", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Stances", amount: 3, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Assassinations", amount: 1, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Weapon Skins", amount: 7, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Loadout Weapons", amount: 8, description: "Common to rare only", tags: ["Games", "Video Games"]},
+        {name: "Halo Reqs, Certifications", amount: 6, description: "Common to rare only", tags: ["Games", "Video Games"]}
+      ]  
+      setAllCounters(counters)
+
     fetch('http://localhost:3000/counters')
     .then(resp => resp.json())
     .then(data => console.log(data))
@@ -40,7 +42,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
+    <div style={{ backgroundColor: "gray", maxWidth: "50%" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br /><br /><br />
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
