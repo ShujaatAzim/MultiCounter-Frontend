@@ -29,7 +29,7 @@ const Counter = props => {
     setEditing(false)
     setDeleting(false)
   }
-
+  
   return (
     <div style={{ backgroundColor: "whitesmoke"}}>
       {editing ?
@@ -65,7 +65,7 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
-          Tags: {tags.map(tag => <span>{tag},</span>)}
+          Tags: {tags.map(tag => <span>{tag.name},</span>)}
           <h5>{description}</h5>
           <button onClick={increase}>+</button><button onClick={decrease}>-</button>
             <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button>
