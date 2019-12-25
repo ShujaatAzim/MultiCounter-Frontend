@@ -29,7 +29,7 @@ const Counter = props => {
     setEditing(false)
     setDeleting(false)
   }
-  
+
   return (
     <div style={{ backgroundColor: "whitesmoke"}}>
       {editing ?
@@ -37,7 +37,7 @@ const Counter = props => {
           <hr />
           <h4>{name}: {amount} </h4>
           <div>
-            <b>Tags:</b> {tags.map(tag => <span><i>{tag}</i> </span>)}
+            <b>Tags:</b> {tags.map(tag => <span><i>{tag.name}</i> </span>)}
           </div>
           <button disabled>+</button><button disabled>-</button><button onClick={cancelChange}>Cancel</button><button disabled>Delete</button>
             <form onSubmit={cancelChange}>
@@ -55,7 +55,7 @@ const Counter = props => {
           <hr />
           <h4>{name}: {amount} </h4>
           <div>
-            <b>Tags:</b> {tags.map(tag => <span><i>{tag}</i> </span>)}
+            <b>Tags:</b> {tags.map(tag => <span><i>{tag.name}</i> </span>)}
           </div>
           <button disabled>+</button><button disabled>-</button><button disabled>Edit</button><button disabled>Delete</button>
             <h4>Are you sure you want to delete?<button onClick={() => props.finalizeDelete(name)}>Yes</button>

@@ -13,13 +13,9 @@ const App = () => {
 
   
   useEffect( () => {
-    const getcounters = async () => {
-      const resp = await fetch('http://localhost:3000/counters')
-      const data = await resp.json()
-      console.log(data)
-      setAllCounters(data)
-    }
-    getcounters()
+    fetch('http://localhost:3000/counters')
+    .then(resp => resp.json())
+    .then(data => setAllCounters(data))
   }, [])
 
   const finalizeCounters = (newCounters) => {
