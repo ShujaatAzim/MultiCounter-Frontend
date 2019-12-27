@@ -16,6 +16,7 @@ const App = () => {
     fetch('http://localhost:3000/counters')
     .then(resp => resp.json())
     .then(data => setAllCounters(data))
+    // can also do as async
   }, [])
 
   const finalizeCounters = (newCounters) => {
@@ -31,7 +32,7 @@ const App = () => {
 
   return (
     <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
-      <h1>MultiCounter</h1>By Shujaat Azim
+      <h1>MultiCounter (name needs work)</h1>By Shujaat Azim
       <br /><br /><br />
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
         <div><button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button></div>
