@@ -36,10 +36,11 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
+          <h5>{description}</h5>
+          <b>Tags:</b> {tags.map(tag => <span key={tag.name}><i>{tag.name}</i> </span>)}
           <div>
-            <b>Tags:</b> {tags.map(tag => <span><i>{tag.name}</i> </span>)}
-          </div>
           <button disabled>+</button><button disabled>-</button><button onClick={cancelChange}>Cancel</button><button disabled>Delete</button>
+          </div>
             <form onSubmit={cancelChange}>
               <label><i>Edit Counter Name: </i></label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -54,10 +55,12 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
+          <h5>{description}</h5>
+          <b>Tags:</b> {tags.map(tag => <span key={tag.name}><i>{tag.name}</i> </span>)}
           <div>
-            <b>Tags:</b> {tags.map(tag => <span><i>{tag.name}</i> </span>)}
+            <br />
+            <button disabled>+</button><button disabled>-</button><button disabled>Edit</button><button disabled>Delete</button>
           </div>
-          <button disabled>+</button><button disabled>-</button><button disabled>Edit</button><button disabled>Delete</button>
             <h4>Are you sure you want to delete?<button onClick={() => props.finalizeDelete(name)}>Yes</button>
               <button onClick={cancelChange}>Cancel</button></h4>
         </div>
@@ -65,11 +68,13 @@ const Counter = props => {
         <div>
           <hr />
           <h4>{name}: {amount} </h4>
-          Tags: {tags.map(tag => <span>{tag.name},</span>)}
           <h5>{description}</h5>
-          <button onClick={increase}>+</button><button onClick={decrease}>-</button>
-            <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button>
-          <br />
+          <b>Tags:</b> {tags.map(tag => <span key={tag.name}><i>{tag.name}</i> </span>)}
+          <div>
+            <br />
+            <button onClick={increase}>+</button><button onClick={decrease}>-</button>
+              <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button>
+          </div>
         </div>
         }
     </div>
