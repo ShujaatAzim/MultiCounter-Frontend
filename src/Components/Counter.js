@@ -17,17 +17,31 @@ const Counter = props => {
     setAmount(amount - 1)
   }
 
-  const editCounter = () => {
+  const editingCounter = () => {
     setEditing(true)
   }
 
-  const deleteCounter = () => {
+  const deletingCounter = () => {
     setDeleting(true)
   }
 
   const cancelChange = () => {
     setEditing(false)
     setDeleting(false)
+  }
+
+  const finalizeEdit = () => {
+    let edittedCounterInfo = {name: name, amount: amount, description: description, tags: tags}
+    let selectedCounter = props.counterObj.id
+    fetch(`http://localhost:3000/counters/${selectedCounter}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      },
+      body: JSON.stringify(edittedCounterInfo)
+    })
+    .then(cancelChange())
   }
 
   return (
@@ -41,7 +55,7 @@ const Counter = props => {
           <div>
           <button disabled>+</button><button disabled>-</button><button onClick={cancelChange}>Cancel</button><button disabled>Delete</button>
           </div>
-            <form onSubmit={cancelChange}>
+            <form onSubmit={finalizeEdit}>
               <label><i>Edit Counter Name: </i></label>
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
               <label><i>Edit Amount: </i></label>
@@ -61,7 +75,7 @@ const Counter = props => {
             <br />
             <button disabled>+</button><button disabled>-</button><button disabled>Edit</button><button disabled>Delete</button>
           </div>
-            <h4>Are you sure you want to delete?<button onClick={() => props.finalizeDelete(name)}>Yes</button>
+            <h4>Are you sure you want to delete?<button onClick={() => props.deleteCounter(props.counterObj)}>Yes</button>
               <button onClick={cancelChange}>Cancel</button></h4>
         </div>
       : 
@@ -73,7 +87,7 @@ const Counter = props => {
           <div>
             <br />
             <button onClick={increase}>+</button><button onClick={decrease}>-</button>
-              <button onClick={editCounter}>Edit</button><button onClick={deleteCounter}>Delete</button>
+              <button onClick={editingCounter}>Edit</button><button onClick={deletingCounter}>Delete</button>
           </div>
         </div>
         }

@@ -9,12 +9,19 @@ const AddCounterForm = props => {
   const [options, setOptions] = useState([])
   const [allCounters] = useState(props.allCounters)
   const [allTags] = useState(props.allTags)
+  const [selectedTags, setSelectedTags] = useState([])
 
   const addNewCounter = event => {
     event.preventDefault()
-    let newCounter = {"name": newCounterName, "amount": parseInt(newCounterAmount), "description": newCounterDescription, "tags": options}
+    const tags = selectedTags.map(tag => {return { name: tag.value} })
+    let newCounter = {"name": newCounterName, "amount": parseInt(newCounterAmount), "description": newCounterDescription, "tags": tags}
     let currentCounters = allCounters.concat(newCounter)
+    props.postCounter(newCounter)
     props.finalizeCounters(currentCounters)
+  }
+
+  const handleSelectedTags = selectedOption => {    
+    setSelectedTags(selectedOption)
   }
 
   useEffect( () => {
@@ -46,7 +53,7 @@ const AddCounterForm = props => {
         </div>
         <div>
           <label>Tags: </label>
-            <Select isMulti options={options} />
+            <Select isMulti options={options} onChange={handleSelectedTags}/>
         </div>
         <input type="submit" value="Add Counter" />
       </form>
