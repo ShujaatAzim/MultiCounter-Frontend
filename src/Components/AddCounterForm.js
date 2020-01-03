@@ -7,7 +7,6 @@ const AddCounterForm = props => {
   const [newCounterAmount, setNewCounterAmount] = useState(0)
   const [newCounterDescription, setNewCounterDescription] = useState("")
   const [options, setOptions] = useState([])
-  const [allCounters] = useState(props.allCounters)
   const [allTags] = useState(props.allTags)
   const [selectedTags, setSelectedTags] = useState([])
 
@@ -15,9 +14,7 @@ const AddCounterForm = props => {
     event.preventDefault()
     const tags = selectedTags.map(tag => {return { name: tag.value} })
     let newCounter = {"name": newCounterName, "amount": parseInt(newCounterAmount), "description": newCounterDescription, "tags": tags}
-    let currentCounters = allCounters.concat(newCounter)
     props.postCounter(newCounter)
-    props.finalizeCounters(currentCounters)
   }
 
   const handleSelectedTags = selectedOption => {    

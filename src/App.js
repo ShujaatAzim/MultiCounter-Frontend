@@ -24,14 +24,16 @@ const App = () => {
     .then(tags => setAllTags(tags))
   }
 
-  const postCounter = (counter) => {
+  const postCounter = counter => {
     fetch('http://localhost:3000/counters', {
       method: "POST",
       body: JSON.stringify(counter),
       headers: {
         "Content-Type": "application/json"
-      },
+      }
     })
+    .then(handleFormRender())
+    .then(getCounters())
   }
 
   const deleteCounter = selectedCounter => {
@@ -54,11 +56,6 @@ const App = () => {
     getTags()
   }, [])
 
-  const finalizeCounters = newCounters => {
-    setAllCounters(newCounters)
-    handleFormRender()
-  }
-
   return (
     <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
       <h1>MultiCounter (name needs work)</h1>By Shujaat Azim
@@ -70,12 +67,11 @@ const App = () => {
         <br />
         <div><button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button>
         {!addingCounter ? <button>Add a Tag</button> : <button disabled>Add a Tag</button>}</div>
-        <div>{addingCounter ? <AddCounterForm allCounters={allCounters} allTags={allTags} finalizeCounters={finalizeCounters} 
-          postCounter={postCounter} /> : null}</div>
+        <div>{ addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : null }</div>
       <div>
         <br />
         {allCounters.map(counter => {
-          return <Counter key={counter.name} counterObj={counter} deleteCounter={deleteCounter} finalizeCounters={finalizeCounters}/>
+          return <Counter key={counter.name} counterObj={counter} deleteCounter={deleteCounter} />
         })}
       </div>
     </div>
