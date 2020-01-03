@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import Counter from './Components/Counter'
 import AddCounterForm from './Components/AddCounterForm'
+import AddTagForm from './Components/AddTagForm';
 
 const App = () => {
 
   const [allCounters, setAllCounters] = useState([])
   const [allTags, setAllTags] = useState([])
   const [addingCounter, setAddingCounter] = useState(false)
+  const [addingTag, setAddingTag] = useState(false)
 
-  const handleFormRender = () => {
+  const handleCounterFormRender = () => {
     setAddingCounter(!addingCounter)
+  }
+
+  const handleTagFormRender = () => {
+    setAddingTag(!addingTag)
   }
 
   const getCounters = () => {
@@ -32,8 +38,22 @@ const App = () => {
         "Content-Type": "application/json"
       }
     })
-    .then(handleFormRender())
+    .then(handleCounterFormRender())
     .then(getCounters())
+  }
+
+  const postTag = tag => {
+    console.log("posting tag!")
+    handleTagFormRender()
+    // fetch('http://localhost:3000/tags', {
+    //   method: "POST",
+    //   body: JSON.stringify(tag),
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   }
+    // })
+    // .then(handleTagFormRender())
+    // .then(getTags())
   }
 
   const deleteCounter = selectedCounter => {
@@ -65,9 +85,15 @@ const App = () => {
         <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
         <div style={{ color: "maroon" }}><b><i>Total Number of Tags: {allTags.length}</i></b></div>
         <br />
-        <div><button onClick={handleFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button>
-        {!addingCounter ? <button>Add a Tag</button> : <button disabled>Add a Tag</button>}</div>
-        <div>{ addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : null }</div>
+          <div>
+            {!addingTag ? <button onClick={handleCounterFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button> : 
+              <button disabled>Add a Counter</button> }
+            {!addingCounter ? <button onClick={handleTagFormRender}>{!addingTag ? "Add a Tag" : "Cancel Adding"}</button> : 
+              <button disabled>Add a Tag</button> }
+          </div>
+          <div>{ addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : 
+                  addingTag? <AddTagForm postTag={postTag} /> : null }
+          </div>
       <div>
         <br />
         {allCounters.map(counter => {
