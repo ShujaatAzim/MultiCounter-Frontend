@@ -10,13 +10,10 @@ const App = () => {
   const [addingCounter, setAddingCounter] = useState(false)
   const [addingTag, setAddingTag] = useState(false)
 
-  const handleCounterFormRender = () => {
-    setAddingCounter(!addingCounter)
-  }
-
-  const handleTagFormRender = () => {
-    setAddingTag(!addingTag)
-  }
+  useEffect( () => {
+    getCounters()
+    getTags()
+  }, [])
 
   const getCounters = () => {
     fetch('http://localhost:3000/counters')
@@ -31,6 +28,10 @@ const App = () => {
   }
 
   const postCounter = counter => {
+    let currentCounters = [...allCounters]
+    let newCounters = currentCounters.concat(counter)
+    setAllCounters(newCounters)
+
     fetch('http://localhost:3000/counters', {
       method: "POST",
       body: JSON.stringify(counter),
@@ -43,17 +44,19 @@ const App = () => {
   }
 
   const postTag = tag => {
-    console.log("posting tag!")
-    handleTagFormRender()
-    // fetch('http://localhost:3000/tags', {
-    //   method: "POST",
-    //   body: JSON.stringify(tag),
-    //   headers: {
-    //     "Content-Type": "application/json"
-    //   }
-    // })
-    // .then(handleTagFormRender())
-    // .then(getTags())
+    let currentTags = [...allTags]
+    let newTags = currentTags.concat(tag)
+    setAllTags(newTags)
+
+    fetch('http://localhost:3000/tags', {
+      method: "POST",
+      body: JSON.stringify(tag),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+    .then(handleTagFormRender())
+    .then(getTags())
   }
 
   const deleteCounter = selectedCounter => {
@@ -71,10 +74,17 @@ const App = () => {
     })
   }
 
-  useEffect( () => {
-    getCounters()
-    getTags()
-  }, [])
+  // const deleteTag = selectedTag => {
+  //   console.log(`deleting this tag: ${selectedTag}`)
+  // }
+
+  const handleCounterFormRender = () => {
+    setAddingCounter(!addingCounter)
+  }
+
+  const handleTagFormRender = () => {
+    setAddingTag(!addingTag)
+  }
 
   return (
     <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
@@ -82,18 +92,18 @@ const App = () => {
       <br /><br />
       <hr /><hr />
       <br />
-        <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
-        <div style={{ color: "maroon" }}><b><i>Total Number of Tags: {allTags.length}</i></b></div>
-        <br />
-          <div>
-            {!addingTag ? <button onClick={handleCounterFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button> : 
-              <button disabled>Add a Counter</button> }
-            {!addingCounter ? <button onClick={handleTagFormRender}>{!addingTag ? "Add a Tag" : "Cancel Adding"}</button> : 
-              <button disabled>Add a Tag</button> }
-          </div>
-          <div>{ addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : 
-                  addingTag? <AddTagForm postTag={postTag} /> : null }
-          </div>
+      <div style={{ color: "maroon" }}><b><i>Total Number of Counters: {allCounters.length}</i></b></div>
+      <div style={{ color: "maroon" }}><b><i>Total Number of Tags: {allTags.length}</i></b></div>
+      <br />
+        <div>
+          {!addingTag ? <button onClick={handleCounterFormRender}>{!addingCounter ? "Add a Counter" : "Cancel Adding"}</button> : 
+            <button disabled>Add a Counter</button> }
+          {!addingCounter ? <button onClick={handleTagFormRender}>{!addingTag ? "Add a Tag" : "Cancel Adding"}</button> : 
+            <button disabled>Add a Tag</button> }
+        </div>
+        <div>
+          { addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : addingTag? <AddTagForm postTag={postTag} /> : null }
+        </div>
       <div>
         <br />
         {allCounters.map(counter => {
