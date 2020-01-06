@@ -122,7 +122,6 @@ const App = () => {
             showTags ? <Button onClick={handleTagFormRender}>{ addingTag ? "Cancel" : "Add a Tag" }</Button> : null }
           { addingCounter ? <AddCounterForm allTags={allTags} postCounter={postCounter} /> : addingTag? <AddTagForm postTag={postTag} /> : null }
         </div>
-        <br />
       { showCounters ?
       <div>
         <br />
@@ -132,6 +131,7 @@ const App = () => {
       </div>
       : showTags?
       <div>
+        <hr />
         <ul>
           {allTags.map(tag => <li key={tag.name}><Button onClick={() => deleteTag(tag)}>x</Button>{tag.name}</li>)}
         </ul>

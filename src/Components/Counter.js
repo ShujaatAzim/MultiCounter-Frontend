@@ -33,10 +33,6 @@ const Counter = props => {
     setDeleting(false)
   }
 
-  // const trySetTags = () => {
-  //   console.log("setting tags")
-  // }
-
   const finalizeEdit = () => {
     let edittedCounterInfo = {name: name, amount: amount, description: description, tags: tags}
     let selectedCounter = props.counterObj.id
