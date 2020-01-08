@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 
-const Tag = () => {
-
-  const [allTags] = useState([{name: dingo}])
+const Tag = props => {
 
   return (
-    <h1>Tag Placeholder</h1>
+    <span onClick={() => props.removeTag(props.tagObj)}>
+      <i> #{props.tagObj.name}</i>
+    </span>
   )
 }
 

@@ -19,12 +19,14 @@ const App = () => {
   }, [])
 
   const getCounters = () => {
+    console.log("firing getCounters")
     fetch('http://localhost:3000/counters')
     .then(resp => resp.json())
     .then(counters => setAllCounters(counters))
   }
 
   const getTags = () => {
+    console.log("firing getTags")
     fetch('http://localhost:3000/tags')
     .then(resp => resp.json())
     .then(tags => setAllTags(tags))
@@ -93,10 +95,12 @@ const App = () => {
   }
 
   const handleCounterFormRender = () => {
+    console.log("firing handleCounterFormRender")
     setAddingCounter(!addingCounter)
   }
 
   const handleTagFormRender = () => {
+    console.log("firing handleTagFormRender")
     setAddingTag(!addingTag)
   }
 
