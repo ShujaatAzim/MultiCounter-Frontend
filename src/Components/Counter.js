@@ -3,6 +3,7 @@ import Tag from './Tag'
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import '../Styles/App.css'
 
 const Counter = props => {
 
@@ -66,10 +67,9 @@ const Counter = props => {
   }
 
   return (
-    <div>
+    <div className="counter">
       {editing ?
         <div>
-          <hr />
           <Card style={{ width: '25rem' }}>
             <Card.Body>
               <Card.Title>{name}: {amount}</Card.Title>
@@ -94,7 +94,6 @@ const Counter = props => {
       </div> 
         : deleting ? 
         <div>
-        <hr />
         <Card style={{ width: '25rem' }}>
           <Card.Body>
             <Card.Title>{name}: {amount}</Card.Title>
@@ -115,7 +114,6 @@ const Counter = props => {
       </div>
       :
       <div>
-        <hr />
         <Card style={{ width: '25rem' }}>
           <Card.Body>
             <Card.Title>{name}: {amount}</Card.Title>
