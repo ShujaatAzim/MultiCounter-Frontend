@@ -6,8 +6,8 @@ const AddCounterForm = props => {
   const [newCounterName, setNewCounterName] = useState("")
   const [newCounterAmount, setNewCounterAmount] = useState(0)
   const [newCounterDescription, setNewCounterDescription] = useState("")
-  const [options, setOptions] = useState([])
   const [allTags] = useState(props.allTags)
+  const [options, setOptions] = useState([])
   const [selectedTags, setSelectedTags] = useState([])
 
   const addNewCounter = event => {
