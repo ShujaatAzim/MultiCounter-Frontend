@@ -110,7 +110,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ backgroundColor: "whitesmoke", maxWidth: "50%" }}>
+    <div style={{ backgroundColor: "whitesmoke" }}>
       <h1>MultiCounter</h1>By Shujaat Azim
       <br />
       <hr /><hr />
